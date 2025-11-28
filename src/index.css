@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#explained h2{
+font-size: large;
+}
+
+#explained p, #explained li{
+  font-size: medium;
+  font-weight: lighter;
+}
+
+#pricingInput{
+  width:auto;
+  border-radius: 10%;
+  
+  
+}
