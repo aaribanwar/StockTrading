@@ -1,0 +1,16 @@
+0000000000000000000000000000000000000000 667c186c2faedce442bce2d4aee243877e65deca aaribanwar <aaribactivism@gmail.com> 1764137320 +0000	commit (initial): Initialize project using Create React App
+667c186c2faedce442bce2d4aee243877e65deca fe71252dcc22e908d71cc99763151fe6a3d69cc1 aaribanwar <aaribactivism@gmail.com> 1764138168 +0000	commit: initital commit
+fe71252dcc22e908d71cc99763151fe6a3d69cc1 fe71252dcc22e908d71cc99763151fe6a3d69cc1 aaribanwar <aaribactivism@gmail.com> 1764138218 +0000	checkout: moving from master to project-structure
+fe71252dcc22e908d71cc99763151fe6a3d69cc1 32213a2977992d78a1ae73bdfb2609c11035fa38 aaribanwar <aaribactivism@gmail.com> 1764139220 +0000	commit: component-structure
+32213a2977992d78a1ae73bdfb2609c11035fa38 32213a2977992d78a1ae73bdfb2609c11035fa38 aaribanwar <aaribactivism@gmail.com> 1764139232 +0000	checkout: moving from project-structure to home-component
+32213a2977992d78a1ae73bdfb2609c11035fa38 2528ba07b87769cdd19654bcf10d823cca6b0177 aaribanwar <aaribactivism@gmail.com> 1764221194 +0530	commit: Home layout complete
+2528ba07b87769cdd19654bcf10d823cca6b0177 2528ba07b87769cdd19654bcf10d823cca6b0177 aaribanwar <aaribactivism@gmail.com> 1764221240 +0530	checkout: moving from home-component to routing
+2528ba07b87769cdd19654bcf10d823cca6b0177 a30f0a811b2809a4d567f72f4f9ac3e5f42937b3 aaribanwar <aaribactivism@gmail.com> 1764343217 +0000	commit: Almost complete the structure, except support and dashboard
+a30f0a811b2809a4d567f72f4f9ac3e5f42937b3 fe71252dcc22e908d71cc99763151fe6a3d69cc1 aaribanwar <aaribactivism@gmail.com> 1764389237 +0530	checkout: moving from routing to master
+fe71252dcc22e908d71cc99763151fe6a3d69cc1 0000000000000000000000000000000000000000 aaribanwar <aaribactivism@gmail.com> 1764389257 +0530	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 fe71252dcc22e908d71cc99763151fe6a3d69cc1 aaribanwar <aaribactivism@gmail.com> 1764389257 +0530	Branch: renamed refs/heads/master to refs/heads/main
+fe71252dcc22e908d71cc99763151fe6a3d69cc1 a30f0a811b2809a4d567f72f4f9ac3e5f42937b3 aaribanwar <aaribactivism@gmail.com> 1764389363 +0530	checkout: moving from main to routing
+a30f0a811b2809a4d567f72f4f9ac3e5f42937b3 2528ba07b87769cdd19654bcf10d823cca6b0177 aaribanwar <aaribactivism@gmail.com> 1764389373 +0530	checkout: moving from routing to home-component
+2528ba07b87769cdd19654bcf10d823cca6b0177 32213a2977992d78a1ae73bdfb2609c11035fa38 aaribanwar <aaribactivism@gmail.com> 1764389381 +0530	checkout: moving from home-component to project-structure
+32213a2977992d78a1ae73bdfb2609c11035fa38 a30f0a811b2809a4d567f72f4f9ac3e5f42937b3 aaribanwar <aaribactivism@gmail.com> 1764389541 +0530	checkout: moving from project-structure to routing
+a30f0a811b2809a4d567f72f4f9ac3e5f42937b3 e25d18d6d7bab47936eaba41d4cc3b71e95004a6 aaribanwar <aaribactivism@gmail.com> 1764391900 +0530	commit: all pages complete
