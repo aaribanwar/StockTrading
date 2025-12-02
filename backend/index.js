@@ -1,132 +1,101 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
-
-const {HoldingsModel} = require("./models/HoldingsModel");
-const { holdings } = require("../dashboard/src/data/data");
-
-const {PositionsModel} = require("./models/PositionsModel");
-const { positions } = require("../dashboard/src/data/data");
-
-
-const {OrdersModel} = require("./models/OrdersModel");
-
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const cookieParser = require("cookie-parser");
 
-// const {OrdersModel} = require("./models/OrdersModel");
-// const { o } = require("../dashboard/src/data/data");
+const { HoldingsModel } = require("./models/HoldingsModel");
+const { PositionsModel } = require("./models/PositionsModel");
+const { OrdersModel } = require("./models/OrdersModel");
 
+//route
+const  router = require("./server/routes/AuthRoute");
 
-
-
-require('dotenv').config();
-
-
+const MONGO_URL = process.env.MONGO_URL;
 const PORT = process.env.PORT || 3002;
-const uri = process.env.MONGO_URL;
-
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 const app = express();
 
+// --- middleware ---
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
-// app.get("/addHoldings", async( req , res ) => {
-//     let tempHoldings = [];
-//     tempHoldings = holdings;
+// use built-in body parser
+app.use(express.json());
 
-//     tempHoldings.forEach( 
-//         (holding) => {
-//             let newHolding = new HoldingsModel(
-//                 {
-//                     name: holding.name,
-//                     qty: holding.qty,
-//                     avg: holding.avg,
-//                     price: holding.price,
-//                     net: holding.net,
-//                     day: holding.say,
-//                 }
-//             );
+//cookie parser
+app.use(cookieParser());
 
-//             newHolding.save();
-//              console.log("Data is saved");
-//         }
-//     );
+//Route for Authentication
+app.use("/", router);
 
-//    res.send("All holding data is saved");
-
-
-// });
-
-
-
-
-// app.get("/addPositions", async(req,res) => {
-//     let tempPositions = [];
-//     tempPositions = positions;
-
-//     tempPositions.forEach( (position) => {
-//         let newPosition = new PositionsModel(
-//             {
-//                 name: position.name,
-//                 product: position.product,
-//                 qty: positionqty,
-//                 avg: position.avg,
-//                 day: position.day,
-//                 isLoss: position.isLoss,
-//                 net: position.net,
-//                 price: position.price,
-//             }
-//         );
-
-//         newPosition.save();
-//         console.log("Data is saved",newPosition.name);
-//     });
-
-//     res.send("All data saved");
-
-// });
-
-app.use(cors());
-app.use(bodyParser.json());
-
-app.get( "/allHoldings", async (req,res) => {
-    let allHoldings = await HoldingsModel.find();
-    console.log(allHoldings);
+// --- routes ---
+app.get("/allHoldings", async (req, res) => {
+  try {
+    const allHoldings = await HoldingsModel.find();
     res.json(allHoldings);
-
+  } catch (err) {
+    console.error("Error fetching holdings:", err);
+    res.status(500).send("Server error");
+  }
 });
 
-app.get( "/allPositions", async (req,res) => {
-    let allPositions = await PositionsModel.find();
-    //console.log(allPositions);
+app.get("/allPositions", async (req, res) => {
+  try {
+    const allPositions = await PositionsModel.find();
     res.json(allPositions);
-
+  } catch (err) {
+    console.error("Error fetching positions:", err);
+    res.status(500).send("Server error");
+  }
 });
 
-app.get( "/allOrders", async (req,res) => {
-    let allOrders = await OrdersModel.find();
-    //console.log(allPositions);
+app.get("/allOrders", async (req, res) => {
+  try {
+    const allOrders = await OrdersModel.find();
     res.json(allOrders);
-
+  } catch (err) {
+    console.error("Error fetching orders:", err);
+    res.status(500).send("Server error");
+  }
 });
 
-app.post( "/newOrder", async (req,res) => {
-    let newOrder = new OrdersModel( {
-        name: req.body.name,
-         qty: req.body.qty,
-        price: req.body.price,
-        mode: req.body.mode,
+app.post("/newOrder", async (req, res) => {
+  try {
+    const { name, qty, price, mode } = req.body;
+    const newOrder = new OrdersModel({ name, qty, price, mode });
+    await newOrder.save();
+    res.status(201).send("New Order Saved");
+  } catch (err) {
+    console.error("Error saving order:", err);
+    res.status(500).send("Server error");
+  }
+});
 
+// --- start function: connect DB then listen ---
+async function start() {
+  if (!MONGO_URL) {
+    console.error("Missing MONGO_URL in env");
+    process.exit(1);
+  }
 
+  try {
+    await mongoose.connect(MONGO_URL); // no legacy options
+    console.log("MongoDB connected successfully");
+
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
     });
+  } catch (err) {
+    console.error("Failed to connect to MongoDB:", err);
+    process.exit(1);
+  }
+}
 
-    newOrder.save();
-    res.send(" New Order Saved");
-});
-
-
-
-app.listen( PORT, () => {
-    console.log("App Started");
-    mongoose.connect(uri);
-    console.log("DataBase Connected ");
-});
+start();
