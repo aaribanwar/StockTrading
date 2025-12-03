@@ -1,12 +1,66 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "./login.css";
+
+
 
 const Summary = () => {
+
+  const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        console.log("no cookies.token");
+        navigate("/login");
+      }
+      const { data } = await axios.post(
+        "http://localhost:3002",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
+      setUsername(user);
+      return status
+        ? (console.log(status," hellooooo"),(`Hello ${user}`, {
+            position: "top-right",
+          }))
+        : (removeCookie("token"), console.log("Token removed by status check"), navigate("/login"));
+    };
+
+
+
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+  const Logout = () => {
+    removeCookie("token");
+    navigate("/signup");
+  };
+
   return (
     <>
       <div className="username">
-        <h6>Hi, User!</h6>
+       <h4>
+          {" "}
+          Welcome <span>{username}</span>
+        </h4>
         <hr className="divider" />
       </div>
+
+      <div className="section">
+        <div className="home_page">
+        <span >
+          <button onClick={Logout}>LOGOUT</button>
+        </span>
+        </div>
+        </div>
 
       <div className="section">
         <span>
@@ -57,6 +111,7 @@ const Summary = () => {
         </div>
         <hr className="divider" />
       </div>
+      <ToastContainer />
     </>
   );
 };
