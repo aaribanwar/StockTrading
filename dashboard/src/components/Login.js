@@ -8,6 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({ email: "", password: "" });
   const { email, password } = inputValue;
+  
 
   // subscribe to token cookie (so we get a React update when it appears)
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
