@@ -24,7 +24,7 @@ const TradeActionWindow = ({ uid, mode }) => {
     };
 
     try {
-      await axios.post("http://localhost:3002/newOrder", payload);
+      await axios.post(`${process.env.REACT_APP_API_URL}/newOrder`, payload);
       handleOrdersChanged();
       closeTradeWindow();
     } catch (err) {

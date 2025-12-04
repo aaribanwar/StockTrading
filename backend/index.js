@@ -35,6 +35,12 @@ app.use(cookieParser());
 //Route for Authentication
 app.use("/", router);
 
+
+//--healthroute--
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 // --- routes ---
 app.get("/allHoldings", async (req, res) => {
   try {

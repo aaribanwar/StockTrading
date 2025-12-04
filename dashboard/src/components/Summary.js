@@ -22,7 +22,7 @@ const Summary = () => {
         navigate("/login");
       }
       const { data } = await axios.post(
-        "http://localhost:3002",
+        `${process.env.REACT_APP_API_URL}`,
         {},
         { withCredentials: true }
       );
