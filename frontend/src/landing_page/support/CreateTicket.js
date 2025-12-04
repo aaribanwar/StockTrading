@@ -19,7 +19,7 @@ function CreateTicket() {
                   <ul class="list-group list-group-flush py-3 fw-light">
                     <li className="list-group-item ">
                       <a
-                        href=""
+                        href="https://github.com/aaribanwar/StockTrading"
                         className="link-underline link-underline-opacity-0"
                       >
                         Residential Individual
@@ -27,7 +27,7 @@ function CreateTicket() {
                     </li>
                     <li className="list-group-item ">
                       <a
-                        href=""
+                        href="https://github.com/aaribanwar/StockTrading"
                         className="link-underline link-underline-opacity-0"
                       >
                         Minor
@@ -35,7 +35,7 @@ function CreateTicket() {
                     </li>
                     <li className="list-group-item ">
                       <a
-                        href=""
+                        href="https://github.com/aaribanwar/StockTrading"
                         className="link-underline link-underline-opacity-0"
                       >
                         Non Resident Indian (NRI)
@@ -43,7 +43,7 @@ function CreateTicket() {
                     </li>
                     <li className="list-group-item ">
                       <a
-                        href=""
+                        href="https://github.com/aaribanwar/StockTrading"
                         className="link-underline link-underline-opacity-0"
                       >
                         Company, Partnership, HUF, and LLP
@@ -51,7 +51,7 @@ function CreateTicket() {
                     </li>
                     <li className="list-group-item ">
                       <a
-                        href=""
+                        href="https://github.com/aaribanwar/StockTrading"
                         className="link-underline link-underline-opacity-0"
                       >
                         Glossary

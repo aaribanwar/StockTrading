@@ -1,6 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+
 function OpenAccount() {
     return (  
         <div className='container text-center p-5'>
